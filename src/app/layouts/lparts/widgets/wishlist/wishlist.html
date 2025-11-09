@@ -1,0 +1,31 @@
+<div class="relative px-5 " (click)="wishlistDisplayToggle()">
+    <button>
+        <ion-icon name="heart-outline" class="text-2xl text-blue-400"></ion-icon>
+        <span class="text-lg font-serif">Wishlist</span>
+    </button>
+
+
+    <div class="absolute bg-white -right-20 border border-blue-300 rounded w-72 py-1 shadow-lg overflow-hidden transition-all duration-500 ease-in-out  z-50"
+        [class.max-h-0]="!wishlistDisplay" [class.opacity-0]="!wishlistDisplay" [class.max-h-96]="wishlistDisplay"
+        [class.opacity-100]="wishlistDisplay" [class.translate-y-2]="!wishlistDisplay"
+        [class.translate-y-0]="wishlistDisplay">
+
+
+        <ul>
+            <li class="flex gap-2 justify-between w-auto bg-blue-300 py-1 px-2 items-center ">
+
+                <img src="assets/images/free.jpg" width="40" height="40" alt="jij">
+
+
+                <span> Product Name </span>
+                <span> 1x </span>
+                <span> $150</span>
+
+
+            </li>
+        </ul>
+
+    </div>
+
+
+</div>

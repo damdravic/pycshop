@@ -1,0 +1,11 @@
+<div class="w-full rounded-box bg-base-200 relative">
+    @if (isBrowser) {
+    <swiper-container init="false" navigation="true" loop="true" class="w-full h-64 rounded-xl overflow-hidden">
+        @for (img of images; track img.src) {
+        <swiper-slide>
+            <img [src]="img.src" [alt]="img.alt" class="w-full h-full object-cover" />
+        </swiper-slide>
+        }
+    </swiper-container>
+    }
+</div>
