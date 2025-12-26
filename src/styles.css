@@ -1,16 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Montserrat:wght@500;@600;@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Montserrat:wght@500;600;700&display=swap');
 
 @import 'swiper/swiper-bundle.css';
 @import 'tailwindcss';
 @plugin "daisyui";
 
-@theme {
-  --font-sans: 'Cormorant Garamond', sans-serif;
-  --font-serif: 'Montserrat', serif;
+@layer base{
+    input:-moz-autofill,
+  textarea:-moz-autofill,
+  select:-moz-autofill {
+    box-shadow: 0 0 0 1000px #ffffff inset !important;
+    -moz-text-fill-color: #000 !important;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #000 !important;
+  }
+
 }
 
-
+ @layer utilities {
+    .font-cormorant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-mont-alt {
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+  .font-mont{
+    font-family : 'Montserrat',sans-serif;
+  }
+ }
+ 
+ @layer components {
+  .text-shadow-black {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+input:autofill {
+  background: #fff; /* or any other */
+}
 
 
   .test {

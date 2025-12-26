@@ -4,25 +4,40 @@
 
         <div class="logo min-w-[200px]  flex items-center justify-center ">
             <a href="" class="logo flex ">
-                <img src="assets/images/anaxim_1.png" width="200" height="150" class="" alt="cozynest">
+                <img src="assets/images/logoPyc.png" width="200" height="150" class="" alt="cozynest">
             </a>
         </div>
 
-        <div class="center-area w-full  flex justify-center items-center ">
+        <div class="center-area w-full relative flex justify-center gap-1 items-center ">
             <div class="search-area ">
-                <input type="text" placeholder="Xlarge" class="input input-xl" />
+                <input type="text" placeholder="Search product" class="input  focus:outline-none focus:ring-0  rounded-l-2xl input-md"
+                    (input)="onSearch($event)" />
+
             </div>
+            <div class="all-product">
+                <button class="btn btn-md btn-active rounded-r-2xl lg"> Produse</button>
+            </div>
+            @if(showResult ){
+            <app-search-result [result$]="result$" class="absolute left-50 top-full z-50  ">
+               
+            </app-search-result>
 
-          
+            }
+
+
 
         </div>
-        <div class="right-optins flex justify-center items-center  gap-5 py-0.5 px-5">
-        <app-wishlist></app-wishlist>
-        <app-cart></app-cart>
-       <app-account></app-account>
+        <div class="right-optins flex   justify-center items-center ">
+            <div class="bg-blue-100 flex  justify-center items-center lg rounded-2xl">
+            <app-wishlist></app-wishlist>
+            <span>|</span>
+            <app-cart></app-cart>
+            <span>|</span>
+            <app-account></app-account>
+            </div>
         </div>
 
-    
+
     </div>
 
 </header>

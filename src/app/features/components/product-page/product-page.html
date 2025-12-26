@@ -1,0 +1,45 @@
+<section class="w-full mx-auto max-w-6xl px-4 py-6">
+ 
+ 
+ @if(product$ | async ; as product ){
+ 
+ 
+    <!-- Breadcrumb-->
+    <nav class="text-sm mb-4 text-gray-500">
+        dfdf
+    </nav>
+    <!--Main : Image + info -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="aspect-4/3 w-full overflow-hidden rounded-xl flex item-center justify-center">
+            
+            @if(product){
+            <img [src]="product.imagesPaths[0] || 'https://placehold.co/400x300'" [alt]="product.product.name"
+                class="w-full h-full object-contain">
+           
+            }
+        </div>
+        <div class="info shadow-2xl border-b-blue-100 rounded-2xl ">
+            <div class="title text-5xl font-cormorant p-2 mb-2">
+              
+                <h1>{{product.product.name}}</h1>
+                
+            </div>
+            <hr class="bg-amber-100"/>
+            <div class="price text-2xl text-right mt-2 px-2">
+                <div class="label shadow-xl rounded-xl bg-red-500">
+                <span class="px-4 py-1 font-mont text-white text-shadow-black ">{{product.product.price}} lei </span>
+                </div>
+            </div>
+            <div class="description p-3">
+                <p>{{product.product.description}}</p>
+            </div>
+
+
+
+
+        </div>
+    </div>
+}@else{
+    se incarca
+}
+</section>

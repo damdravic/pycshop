@@ -1,0 +1,14 @@
+<div class="w-32 rounded py-2 bg-white shadow-box border">
+@if(result$  ){
+   @for(prod of result$ | async;track prod.id){ 
+    <div class="flex justify-center w-full pointer-cursor bg-blue-100 mb-1 shadow-box hover:bg-blue-200 hover:text-scale-105">
+        {{prod.name}} 
+    </div>
+   }@empty {
+    <div class="flex justify-center pointer-cursor">
+        Nothig Finded
+    </div>
+   }
+}
+</div>
+

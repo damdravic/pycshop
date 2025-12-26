@@ -1,31 +1,54 @@
-<div class="relative px-5 " (click)="wishlistDisplayToggle()">
-    <button>
-        <ion-icon name="heart-outline" class="text-2xl text-blue-400"></ion-icon>
-        <span class="text-lg font-serif">Wishlist</span>
-    </button>
+<div class="dropdown dropdown-center">
+    <div tabindex="0" role="button" class="flex items-center justify-center cursor-pointer px-3 py-1  transition-transform hover:scale-105 duration-300  m-1">
+         <ion-icon name="heart-outline" class="text-2xl text-blue-400"></ion-icon>
+        <span class="font-mont px-1" >Wishlist</span>
+        </div>
+    <ul class="dropdown-content bg-base-100 rounded-box z-1 py-2 w-66 overflow-hidden shadow-sm">
+
+        <li class="bg-blue-200  grid grid-cols-[40px_80px_30px_70px] text-sm items-center gap-2 p-2 w-full">
+            <div class="w-10 ">
+                Image
+            </div>
+            <div class="name   px-2 font-medium ">
+                Name
+            </div>
+          
+            <div class="quantity   px-1">
+                Qty
+            </div>
+            <div class="mtotal  text-right px-2">
+                Total
+            </div>
 
 
-    <div class="absolute bg-white -right-20 border border-blue-300 rounded w-72 py-1 shadow-lg overflow-hidden transition-all duration-500 ease-in-out  z-50"
-        [class.max-h-0]="!wishlistDisplay" [class.opacity-0]="!wishlistDisplay" [class.max-h-96]="wishlistDisplay"
-        [class.opacity-100]="wishlistDisplay" [class.translate-y-2]="!wishlistDisplay"
-        [class.translate-y-0]="wishlistDisplay">
+        </li>
 
 
-        <ul>
-            <li class="flex gap-2 justify-between w-auto bg-blue-300 py-1 px-2 items-center ">
+        @for(cartProd of wishListProducts$ | async ;track cartProd.productWithImages.product.id){
+        <li class="bg-gray-200  grid grid-cols-[40px_80px_30px_70px] text-sm items-center gap-2 p-2 w-full">
+            <div class="w-10 h-10  shrink-0">
+                <img [src]="cartProd.productWithImages.imagesPaths[0]" class="w-full bg-white h-full object-contain rounded"
+                    alt="">
 
-                <img src="assets/images/free.jpg" width="40" height="40" alt="jij">
+            </div>
+            <div class="name   px-2 font-medium ">
+                {{cartProd.productWithImages.product.name}}
+            </div>
+           
+            <div class="quantity  px-1 ">
+                <div class="bg-blue-500  rounded-2xl text-white w-6 h-6 flex items-center justify-center shadow-xl  ">
+                   <span>x{{cartProd.quantity}}</span> 
+                </div>
+             
+            </div>
+            <div class="mtotal text-blue-800 text-right  px-2">
+                {{cartProd.productWithImages.product.price * cartProd.quantity}} lei
+            </div>
+           
 
 
-                <span> Product Name </span>
-                <span> 1x </span>
-                <span> $150</span>
-
-
-            </li>
-        </ul>
-
-    </div>
-
-
+        </li>
+        <hr>
+        }
+    </ul>
 </div>

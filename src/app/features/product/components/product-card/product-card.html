@@ -1,0 +1,26 @@
+<div class=" w-[220px] bg-white  rounded-lg shadow border border-blue-200 p-3 flex flex-col group">
+    <a [routerLink]="['/product',productWithImages.product.id]">
+        <div class="w-full aspect-square overflow-hidden flex  items-center justify-center bg-white">
+            <img [src]="productWithImages.imagesPaths[0] || '' " class="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+        </div>
+    </a>
+
+    <div class="flex flex-1  gap-2 py-2">
+        <h3 class="text-sm  uppercase font-semibold text-gray-900 line-clamp-2">
+            {{productWithImages.product.name}}
+        </h3>
+    </div>
+    <div class="price p-1 flex justify-end">
+
+
+        <div class="px-2 min-w-20    font-mont font-bold text-right text-2xl text-shadow ">
+            {{productWithImages.product.price}}
+            <span class="text-lg font-medium">lei</span>
+        </div>
+
+    </div>
+    <div class=" p-1  flex item-center justify-between">
+
+        <button class="btn btn-primary flex-1" (click)="addToCart(productWithImages)">Adauga in cos</button>
+    </div>
+</div>

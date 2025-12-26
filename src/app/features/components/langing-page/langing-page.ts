@@ -3,10 +3,13 @@ import { Swiper, SwiperOptions } from 'swiper/types';
 import { register } from 'swiper/element/bundle'; 
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Products } from '../../product/components/products/products';
+import { TopProducts } from "../../product/components/top-products/top-products";
+import { CategoryPromoGrid } from '../../product/category-promo-grid/category-promo-grid';
 
 @Component({
   selector: 'app-langing-page',
-  imports: [CommonModule],
+  imports: [CommonModule, Products, TopProducts,CategoryPromoGrid],
   templateUrl: './langing-page.html',
   styleUrl: './langing-page.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
