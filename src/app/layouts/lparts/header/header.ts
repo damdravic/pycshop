@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, Input } from '@angular/core';
 import { Cart } from '../widgets/cart/cart';
 import { Wishlist } from '../widgets/wishlist/wishlist';
@@ -13,7 +13,7 @@ import { Product } from '../../../features/product/models/product';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, Cart, Wishlist, Account, SearchResult],
+  imports: [Cart, Wishlist, Account, SearchResult],
   templateUrl: './header.html',
   styleUrl: './header.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

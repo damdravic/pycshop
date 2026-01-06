@@ -2,14 +2,14 @@ import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, O
 import { Swiper, SwiperOptions } from 'swiper/types';
 import { register } from 'swiper/element/bundle'; 
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { Products } from '../../product/components/products/products';
 import { TopProducts } from "../../product/components/top-products/top-products";
 import { CategoryPromoGrid } from '../../product/category-promo-grid/category-promo-grid';
 
 @Component({
   selector: 'app-langing-page',
-  imports: [CommonModule, Products, TopProducts,CategoryPromoGrid],
+  imports: [Products, TopProducts, CategoryPromoGrid],
   templateUrl: './langing-page.html',
   styleUrl: './langing-page.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

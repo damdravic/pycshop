@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ElementRef, EventEmitter, inject, Output, ViewChild } from '@angular/core';
 import {  FormsModule, NgForm} from '@angular/forms'
 import { Auth } from '../../auth';
@@ -8,7 +8,7 @@ import { response } from 'express';
 
 @Component({
   selector: 'app-login-modal',
-  imports: [ CommonModule , FormsModule],
+  imports: [FormsModule],
   templateUrl: './login-modal.html',
   styleUrl: './login-modal.css',
 })

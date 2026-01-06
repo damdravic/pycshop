@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 
 import { ProductWithImages } from '../../models/productWithImages';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CartActions } from '../../../cart/store/cart.actions';
@@ -9,7 +9,7 @@ import { CartProduct } from '../../../cart/models/cart-product';
 
 @Component({
   selector: 'app-product-card',
-  imports: [CommonModule,RouterModule],
+  imports: [RouterModule],
   templateUrl: './product-card.html',
   styleUrl: './product-card.css',
 })
