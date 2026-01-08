@@ -5,29 +5,35 @@ import { Store } from '@ngrx/store';
 import { Customer } from '../../../../features/authentication/models/customer';
 import { Observable } from 'rxjs';
 import { selectAuthentificatedCustomer, selectAuthState } from '../../../../features/authentication/store/auth.selectors';
+import { ProfileModal } from '../../../../features/authentication/components/profile-modal/profile-modal';
 
 @Component({
   selector: 'app-account',
-  imports: [CommonModule, LoginModal],
+  imports: [CommonModule, LoginModal, ProfileModal],
   templateUrl: './account.html',
   styleUrl: './account.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Account implements OnInit {
-  
+logout() {
+throw new Error('Method not implemented.');
+}
+
+
 
   @ViewChild('loginModal') loginModal !: ElementRef<HTMLDialogElement>;
+  @ViewChild('profileModal') profileModal !: ElementRef<HTMLDialogElement>;
 
   private store = inject(Store);
 
-   customer$ !: Observable<Customer | null> ;
+  customer$ !: Observable<Customer | null>;
 
   accountMenuDisplay: boolean = false;
 
 
 
   ngOnInit(): void {
-  this.customer$ = this.store.select(selectAuthentificatedCustomer);
+    this.customer$ = this.store.select(selectAuthentificatedCustomer);
   }
 
 
@@ -36,18 +42,20 @@ export class Account implements OnInit {
     this.loginModal.nativeElement.showModal();
   }
 
+  //open profile modal
+  openProfileModal() {
+    this.profileModal.nativeElement.showModal();
+  }
+
   //close authView modal
   closeModal() {
     this.loginModal.nativeElement.close();
     console.log('modal closed');
   }
 
-
-  accountDisplayToggle() {
-    this.accountMenuDisplay = !this.accountMenuDisplay
+  //close profile modal
+  closeProfileModal() {
+    this.profileModal.nativeElement.close();
   }
-
-
-
 
 }

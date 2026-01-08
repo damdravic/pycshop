@@ -1,5 +1,5 @@
 
-import { Component, ElementRef, EventEmitter, inject, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, inject, OnInit, Output, ViewChild } from '@angular/core';
 import {  FormsModule, NgForm } from '@angular/forms'
 import { Auth } from '../../auth';
 import { Store } from '@ngrx/store';
@@ -15,7 +15,10 @@ type AuthView ='login'| 'register' | 'forget-password';
   templateUrl: './login-modal.html',
   styleUrl: './login-modal.css',
 })
-export class LoginModal {
+export class LoginModal implements OnInit {
+  ngOnInit(): void {
+    this.authView = 'login';
+  }
 
 
  @Output() closeModal = new EventEmitter<void>()
@@ -27,6 +30,7 @@ export class LoginModal {
  private store = inject(Store);
 
  onClose(){
+  this.authView = 'login';
   this.closeModal.emit();
  }
 

@@ -12,30 +12,44 @@
     </div>
     <ul class="dropdown-content bg-base-100 rounded-box border z-1 py-2 w-33 overflow-hidden shadow-sm">
 
+        <!-- Customer is logged in ...... Display profile and orders button -->
+
         @if(customer$ | async ; as customer){
         <li class="bg-blue-100  text-sm items-center gap-2 p-2 w-full">
-            <button type="button" class="w-full flex justify-center cursor-pointer" (click)="openModal()">
+            <button type="button" class="w-full flex justify-center cursor-pointer" (click)="openProfileModal()">
                 Profile
             </button>
         </li>
-             <li class="bg-blue-100  text-sm items-center gap-2 p-2 w-full">
+        <li class="bg-blue-100  text-sm items-center gap-2 p-2 w-full">
             <button type="button" class="w-full flex justify-center cursor-pointer" (click)="openModal()">
                 Comenzi
             </button>
         </li>
+        <li class=" bg-red-400 text-white text-sm">
+            <button class="w-full flex justify-center cursor-pointer" (click)="logout()">
+                Logout
+            </button>
+
+        </li>
+
+        <!-- Customer is not logged in ...... Display login button -->
 
         }@else{
-              <li class="bg-blue-100  text-sm items-center gap-2 p-2 w-full">
+        <li class="bg-blue-100  text-sm items-center gap-2 p-2 w-full">
             <button type="button" class="w-full flex justify-center cursor-pointer" (click)="openModal()">
                 Login
             </button>
         </li>
         }
-    
+
     </ul>
 
 </div>
 
 <dialog #loginModal class="modal">
     <app-login-modal (closeModal)="closeModal()"></app-login-modal>
+</dialog>
+
+<dialog #profileModal class="modal">
+    <app-profile-modal (closeModal)="closeProfileModal()"></app-profile-modal>
 </dialog>

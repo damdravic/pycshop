@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from './auth.actions';
 import { Auth } from '../auth';
 import { catchError, exhaustMap, map, of, switchMap, tap } from 'rxjs';
+import { create } from 'domain';
 
 
 
@@ -20,7 +21,7 @@ export class AuthEffects {
       exhaustMap(({ credentials }) =>
         this.authService.login(credentials).pipe(
           tap(res => console.log("Response " + res.data.customer.firstName)),
-          map(res => AuthActions.loginAuthSuccess({ customer: res.data.customer})),
+          map(res => AuthActions.loginAuthSuccess({ customer: res.data.customer })),
           catchError(err => of(err).pipe(
             tap(e => console.log('Auth error:', e)),
             map(e => AuthActions.loginAuthFailure({ error: e }))
@@ -30,18 +31,36 @@ export class AuthEffects {
     ))
 
 
-    authMe$ = createEffect(() => 
+  authMe$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loadMe),
-      switchMap(() => 
-      this.authService.loadMe().pipe(
-        map(res => AuthActions.loadMeSuccess({customer : res.data.customer})),
-        catchError(err => of(err).pipe(
+      switchMap(() =>
+        this.authService.loadMe().pipe(
+          map(res => AuthActions.loadMeSuccess({ customer: res.data.customer })),
+          catchError(err => of(err).pipe(
             tap(e => console.log('Load Me error:', e)),
             map(e => AuthActions.loginAuthFailure({ error: e }))
+          ))
         ))
-      ))
     )
   )
+
+  register$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.registerAuth),
+      switchMap(({regCustomer}) => 
+      this.authService.register(regCustomer).pipe(
+        map(res => AuthActions.registerAuthSiccess({ customer: res.data.customer })),
+        catchError(err => of(err).pipe(
+          tap(e => console.log('Register error:', e)),
+          map(e => AuthActions.registerAuthFailure({ error: e }))
+        ))
+      ))
+    ))
+
+
+
+
+
 
 }

@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Customer } from '../models/customer';
+import {RegCustomer} from '../models/regCustomer';
 import { Credentials } from '../models/credentials';
 
 export const AuthActions = createActionGroup({
@@ -13,9 +14,12 @@ export const AuthActions = createActionGroup({
     //Auth Me
     'Load Me': emptyProps(),
     'Load Me Success' : props<{customer : Customer}>(),
-    'Load Me Failled' : props<{error : string}>()
+    'Load Me Failled' : props<{error : string}>(),
 
-
+   //Register
+   'Register Auth': props<{regCustomer : RegCustomer}>(),
+   'Register Auth Siccess': props<{customer : Customer}>(),
+   'Register Auth Failure':props<{error: string}>()
 
 
   }
