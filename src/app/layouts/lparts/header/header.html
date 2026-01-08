@@ -10,16 +10,16 @@
 
         <div class="center-area w-full relative flex justify-center gap-1 items-center ">
             <div class="search-area ">
-                <input type="text" placeholder="Search product" class="input  focus:outline-none focus:ring-0  rounded-l-2xl input-md"
-                    (input)="onSearch($event)" />
+                <input type="text" placeholder="Search product"
+                    class="input  focus:outline-none focus:ring-0  rounded-l-2xl input-md" (input)="onSearch($event)" />
 
             </div>
             <div class="all-product">
-                <button class="btn btn-md btn-active rounded-r-2xl lg"> Produse</button>
+                <button class="btn btn-md rounded-r-2xl lg"> Produse</button>
             </div>
             @if(showResult ){
             <app-search-result [result$]="result$" class="absolute left-50 top-full z-50  ">
-               
+
             </app-search-result>
 
             }
@@ -29,11 +29,11 @@
         </div>
         <div class="right-optins flex   justify-center items-center ">
             <div class="bg-blue-100 flex  justify-center items-center lg rounded-2xl">
-            <app-wishlist></app-wishlist>
-            <span>|</span>
-            <app-cart></app-cart>
-            <span>|</span>
-            <app-account></app-account>
+                <app-wishlist></app-wishlist>
+                <span>|</span>
+                <app-cart></app-cart>
+                <span>|</span>
+                <app-account></app-account>
             </div>
         </div>
 

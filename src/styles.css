@@ -5,7 +5,25 @@
 @import 'tailwindcss';
 @plugin "daisyui";
 
+
+html, body {
+  background-color: #ffffff;
+  color: #000000;
+  data-theme: light;
+}
+
+
 @layer base{
+
+ input,
+  textarea,
+  select {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
     input:-moz-autofill,
   textarea:-moz-autofill,
   select:-moz-autofill {
