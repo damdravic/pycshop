@@ -1,42 +1,29 @@
-<div class="modal-box p-0 w-190 h-100">
 
-    <div class="main flex justify-between h-full">
+  <div class="modal-box">
+    <div class="wrapper">
+      @if(authView === 'login'){
+      <ng-content>
+        <div class="title" class="login">Login</div>
+        <button class="btn btn-primary" (click)="register()">Register</button>
+        <button class="btn btn-primary" (click)="forgetPassword()">Forget Password</button>
+         <button class="btn btn-primary" (click)="onClose()">Close</button>
+      </ng-content>
 
-        <div class="left max-w-50 h-full">
-            <img src="assets/images/tv.jpg" alt="" class="h-full object-cover">
-        </div>
-        <div class="right ">
-            <div class="p-2  h-full flex flex-col justify-around">
-                <h3 class="text-lg text-right ">Bine ai venit</h3>
-                <form #loginForm="ngForm" id="loginForm" (ngSubmit)="onSubmit(loginForm)" >
-                    <div class="form-group p-3">
-                        <label for="" class="px-3">User Email</label>
-                        <input type="text" ngModel name="email" class="input hover:outline-none bg-white" placeholder="Username">
-                    </div>
-                    <div class="form-group p-3">
-                        <label for="" class="px-3">Password</label>
-                        <input type="password" ngModel name="password" class="input"  id="">
-                    </div>
-                     </form>
-                    <div class="flex justify-between gap-2">
-                        <button type="submit" class="btn" form="loginForm"  >Login</button>
-
-                        <form class="p-2" method="dialog">
-                            <!-- if there is a button in form, it will close the modal -->
-                            <button  class="btn">Close</button>
-                        </form>
-                    </div>
-
-
-               
-
-
-
-            </div>
-
-
-        </div>
+      } @else if(authView === 'register'){
+      <ng-content>
+        <div class="title">Register</div>
+        <button class="btn btn-primary" (click)="login()">Login</button>
+        <button class="btn btn-primary" (click)="forgetPassword()">Forget Password</button>
+        <button class="btn btn-primary" (click)="onClose()">Close</button>
+      </ng-content>
+      } @else if(authView === 'forget-password'){
+      <ng-content>
+        <div class="title">Forget Password</div>
+        <button class="btn btn-primary" (click)="login()"> Login</button>
+        <button class="btn btn-primary" (click)="register()">Register</button>
+        <button class="btn btn-primary" (click)="onClose()">Close</button>
+      </ng-content>
+      }
 
     </div>
-
-</div>
+  </div>

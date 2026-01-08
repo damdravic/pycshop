@@ -31,13 +31,15 @@ export class Account implements OnInit {
   }
 
 
-
+  //open authView modal
   openModal() {
-    console.log("openModal")
     this.loginModal.nativeElement.showModal();
   }
 
+  //close authView modal
   closeModal() {
+    this.loginModal.nativeElement.close();
+    console.log('modal closed');
   }
 
 
