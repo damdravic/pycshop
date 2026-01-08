@@ -1,29 +1,112 @@
+<div class="modal-box">
+  <div class="wrapper p-2">
 
-  <div class="modal-box">
-    <div class="wrapper">
-      @if(authView === 'login'){
-      <ng-content>
-        <div class="title" class="login">Login</div>
-        <button class="btn btn-primary" (click)="register()">Register</button>
-        <button class="btn btn-primary" (click)="forgetPassword()">Forget Password</button>
-         <button class="btn btn-primary" (click)="onClose()">Close</button>
-      </ng-content>
+    @if(authView === 'login'){
+    <ng-content>
 
-      } @else if(authView === 'register'){
-      <ng-content>
-        <div class="title">Register</div>
-        <button class="btn btn-primary" (click)="login()">Login</button>
-        <button class="btn btn-primary" (click)="forgetPassword()">Forget Password</button>
-        <button class="btn btn-primary" (click)="onClose()">Close</button>
-      </ng-content>
-      } @else if(authView === 'forget-password'){
-      <ng-content>
-        <div class="title">Forget Password</div>
-        <button class="btn btn-primary" (click)="login()"> Login</button>
-        <button class="btn btn-primary" (click)="register()">Register</button>
-        <button class="btn btn-primary" (click)="onClose()">Close</button>
-      </ng-content>
-      }
+      <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
+        <div class="title text-2xl mb-2.5 ">Login</div>
+        <hr class="mb-4" />
+        <div class="input-group mt-1.5">
+          <label for="email" class="block mb-1.5 text-sm font-medium text-headling">Email</label>
+          <input type="email" id="email" name="email" ngModel
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2 "
+            required />
+        </div>
+        <div class="input-group mt-1.5">
+          <label for="password" class="block mb-1.5 text-sm font-medium text-headling">Password</label>
+          <input type="password" id="password" name="password" ngModel
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2 " />
+        </div>
 
-    </div>
+        <div class="flex gap-3 w-full justify-between items-center mt-4 ">
+          <button type="submit" class="btn btn-primary flex-1 mt-4 rounded-xl ">Login</button>
+          <button class="btn btn-primary flex-1 mt-4 rounded-xl" (click)="onClose()">Close</button>
+
+        </div>
+
+
+      </form>
+
+      <div class="rounded mt-4 p-3 text-center">
+        <p class="text-sm ">If you don't have an account, please <span
+            class="text-shadow-md cursor-pointer text-amber-400" (click)="register()">Register</span>
+          . If you forget your password, please <span class="text-shadow-md cursor-pointer text-amber-400"
+            (click)="forgetPassword()">Forget Password</span> .</p>
+      </div>
+
+
+
+
+
+    </ng-content>
+
+    } @else if(authView === 'register'){
+    <ng-content>
+      <div class="title">Register</div>
+      <hr>
+      <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)">
+        <div class="input-group mt-1.5">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName"
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2"
+            ngModel required />
+        </div>
+        <div class="input-group mt-1.5">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName"
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2"
+            ngModel required />
+        </div>
+        <div class="input-group mt-1.5">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email"
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2"
+            ngModel required />
+        </div>
+        <div class="input-group mt-1.5">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password"
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2"
+            ngModel required />
+        </div>
+        <div class="flex gap-3 w-full justify-between items-center mt-4 ">
+          <button type="submit" class="btn btn-primary flex-1 mt-4 rounded-xl ">Register</button>
+          <button class="btn btn-primary flex-1 mt-4 rounded-xl" (click)="onClose()">Close</button>
+        </div>
+      </form>
+      <p class="text-sm ">
+        If you have an account, please
+        <span class="text-shadow-md cursor-pointer text-amber-400" (click)="login()">Login</span>
+        . 
+      </p>
+    </ng-content>
+    } @else if(authView === 'forget-password'){
+    <ng-content>
+      <div class="title">Forget Password</div>
+      <hr>
+      <form #forgetPassForm="ngForm" (ngSubmit)="onSubmitForgetPass(forgetPassForm)">
+        <div class="input-group mt-1.5">
+          <div class="info my-2.5">
+            <p class="text-sm mb-2">Please enter your email address. You will receive a link to create a new password
+              via email.</p>
+          </div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email"
+            class="bg-neutral-400 border text-heading text-sm rounded-xl border-gray-300  block w-full px-3 py-2"
+            ngModel required />
+        </div>
+        <div class="flex gap-3 w-full justify-between items-center mt-4 ">
+          <button type="submit" class="btn btn-primary flex-1 mt-4 rounded-xl ">Send</button>
+          <button class="btn btn-primary flex-1 mt-4 rounded-xl" (click)="onClose()">Close</button>
+        </div>
+      </form>
+      <p>If you have an account and remember your password, please
+        <span class="text-shadow-md cursor-pointer text-amber-400" (click)="login()">Login</span>
+        .</p>
+   
+    </ng-content>
+    }
+
   </div>
+</div>

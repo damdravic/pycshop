@@ -30,14 +30,24 @@ export class LoginModal {
   this.closeModal.emit();
  }
 
- onSubmit(loginForm :  NgForm) {
 
 
+
+onSubmitLogin(loginForm : NgForm){
+  console.log('Login Form Values:', loginForm.value);
   if(loginForm.invalid) return;
-
   this.store.dispatch(AuthActions.loginAuth({credentials : loginForm.value}))
+}
+
+onSubmitRegister(registerForm : NgForm){
  
 }
+onSubmitForgetPass(forgetPassForm : NgForm){
+
+}
+
+
+
  login(){
   this.authView = 'login';
  }
