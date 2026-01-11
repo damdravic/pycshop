@@ -3,7 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { AxmHttpResponse } from '../../core/model/axmHttpResponse';
 import { Product } from './models/product';
-import { response } from 'express';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class ProductService {
      
 
 
-      private server = "http://localhost:8081/shop/public"
+      private server =  environment.apiUrl;
       private http = inject(HttpClient);
 
      

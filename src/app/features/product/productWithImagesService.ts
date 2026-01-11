@@ -16,7 +16,7 @@ export class ProductWithImagesService {
 
   getAllProdWithImages$() : Observable<AxmHttpResponse<{productsWithImages : ProductWithImages[] }>>{
     return this.http.get<AxmHttpResponse<{productsWithImages : ProductWithImages[]}>>(
-      `http://localhost:8081/shop/public/productsWithImages`
+      `${this.serverUrl}/public/productsWithImages`
     ).pipe(
       tap(response => console.log("in service ",response.data.productsWithImages))
     )
