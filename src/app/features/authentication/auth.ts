@@ -26,7 +26,7 @@ export class Auth {
   // if cookie is present, get logged in user
   loadMe(): Observable<AxmHttpResponse<{ customer: Customer }>> {
     return this.http.get<AxmHttpResponse<{ customer: Customer }>>(
-      `${this.serverApi}/customers/loadMe`,
+      `${this.serverApi}/shop/customers/loadMe`,
       { withCredentials: true }
     )
   }
@@ -34,7 +34,7 @@ export class Auth {
   // Register new customer
   register(regCustomer: RegCustomer): Observable<AxmHttpResponse<{ customer: Customer }>> {
     return this.http.post<AxmHttpResponse<{ customer: Customer }>>(
-      `${this.serverApi}/customers/register`, regCustomer)
+      `${this.serverApi}/shop/customers/register`, regCustomer)
   }
 
 

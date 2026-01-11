@@ -7,10 +7,11 @@ import { selectProductsWithImages } from '../../product/store/product-with-image
 import { map, Observable, of, take } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ProductWithImagesActions } from '../../product/store/productWithImages.actions';
+import { ImageUrlPipe } from '../../../core/pipe/image-url-pipe';
 
 @Component({
   selector: 'app-product-page',
-  imports: [CommonModule],
+  imports: [CommonModule, ImageUrlPipe],
   templateUrl: './product-page.html',
   styleUrl: './product-page.css',
 })

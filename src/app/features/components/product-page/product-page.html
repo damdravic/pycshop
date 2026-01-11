@@ -13,7 +13,7 @@
         <div class="aspect-4/3 w-full overflow-hidden rounded-xl flex item-center justify-center">
             
             @if(product){
-            <img [src]="product.imagesPaths[0] || 'https://placehold.co/400x300'" [alt]="product.product.name"
+            <img [src]="(product.imagesPaths[0] || 'https://placehold.co/400x300') | imageUrl" [alt]="product.product.name"
                 class="w-full h-full object-contain">
            
             }

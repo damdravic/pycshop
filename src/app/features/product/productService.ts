@@ -19,7 +19,7 @@ export class ProductService {
      
       getAllProduct$() : Observable<AxmHttpResponse<{products : Product[]}>> {
         return this.http.get<AxmHttpResponse<{products : Product[]}>>(
-          `${this.server}/getAllProducts`
+          `${this.server}/shop/getAllProducts`
         ).pipe(
           tap(response => console.log(response.data.products))
         )
